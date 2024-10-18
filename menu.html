@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Webex Menu</h1>
+    <ul class="menu-options">
+        <li><a href="{{ url_for('test_connection', access_token=access_token) }}">Test Webex Connection</a></li>
+        <li><a href="{{ url_for('view_user_info', access_token=access_token) }}">View User Information</a></li>
+        <li><a href="{{ url_for('list_rooms', access_token=access_token) }}">List Webex Rooms</a></li>
+        <li><a href="{{ url_for('send_message_route', access_token=access_token) }}">Send Message to Room</a></li>
+    </ul>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
